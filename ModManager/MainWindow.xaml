@@ -1,12 +1,31 @@
-﻿<Window x:Class="ModManager.MainWindow"
+﻿    <Window x:Class="ModManager.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
+        Title="ModManager" Height="356.674" Width="532.415" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style TargetType="{x:Type ListBoxItem}">
+                <Setter Property="Foreground" Value="White"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF252525">
+        <ListBox x:Name="lb_Games" HorizontalAlignment="Left" Height="254" Margin="10,10,0,0" VerticalAlignment="Top" Width="497" Background="#FF252525" BorderBrush="Black">
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}" BasedOn="{StaticResource {x:Type ListBoxItem}}">
+                    <EventSetter Event="MouseDoubleClick" Handler="ListBoxItem_MouseDoubleClick"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Open" Click="ListBoxItem_MouseDoubleClick"/>
+                    <MenuItem Header="Delete" Click="btn_Remove_Click"/>
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+        <Button x:Name="btn_Game" Content="Add Game" HorizontalAlignment="Left" Margin="10,269,0,0" VerticalAlignment="Top" Width="497" Click="btn_Game_Click" Background="#FF38D43F" Foreground="White"/>
+        <Button x:Name="btn_Remove" Content="Remove Game" HorizontalAlignment="Left" Margin="10,293,0,0" VerticalAlignment="Top" Width="497" Height="20" Click="btn_Remove_Click" Background="Red" Foreground="White"/>
     </Grid>
 </Window>
